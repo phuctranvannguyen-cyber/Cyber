@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta
+        name="theme-color"
+        content="#02050a"
+    >
+
+    <title>CYBER // FALL</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+<!-- =====================================================
+     GAME WRAPPER
+===================================================== -->
+
+<div id="game">
+
+    <!-- =================================================
+         MAIN MENU
+    ================================================== -->
+
+    <section
+        id="menu-screen"
+        class="screen"
+    >
+
+        <div class="menu-glow"></div>
+
+        <div class="menu-content">
+
+            <div class="game-logo">
+
+                <span class="logo-small">
+                    SYSTEM // ONLINE
+                </span>
+
+                <h1>
+                    CYBER
+                    <span>//</span>
+                    FALL
+                </h1>
+
+                <p>
+                    SURVIVE THE NEON APOCALYPSE
+                </p>
+
+            </div>
+
+
+            <!-- DIFFICULTY -->
+
+            <div class="difficulty-title">
+                SELECT DIFFICULTY
+            </div>
+
+
+            <div
+                class="difficulty-list"
+                id="difficulty-list"
+            >
+
+                <button
+                    class="difficulty-card easy"
+                    data-difficulty="easy"
+                >
+
+                    <span class="difficulty-icon">
+                        I
+                    </span>
+
+                    <span class="difficulty-name">
+                        EASY
+                    </span>
+
+                    <span class="difficulty-description">
+                        SYSTEM TRAINING
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="difficulty-card normal"
+                    data-difficulty="normal"
+                >
+
+                    <span class="difficulty-icon">
+                        II
+                    </span>
+
+                    <span class="difficulty-name">
+                        NORMAL
+                    </span>
+
+                    <span class="difficulty-description">
+                        COMBAT PROTOCOL
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="difficulty-card hard"
+                    data-difficulty="hard"
+                >
+
+                    <span class="difficulty-icon">
+                        III
+                    </span>
+
+                    <span class="difficulty-name">
+                        HARD
+                    </span>
+
+                    <span class="difficulty-description">
+                        NIGHTMARE PROTOCOL
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <div class="menu-info">
+
+                <span>
+                    5 STAGES
+                </span>
+
+                <span>
+                    •
+                </span>
+
+                <span>
+                    BOSS
+                </span>
+
+                <span>
+                    •
+                </span>
+
+                <span>
+                    SKILLS
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         GAME SCREEN
+    ================================================== -->
+
+    <section
+        id="game-screen"
+        class="screen hidden"
+    >
+
+        <!-- =============================================
+             GAME CANVAS
+        ============================================== -->
+
+        <canvas
+            id="game-canvas"
+        ></canvas>
+
+
+
+        <!-- =============================================
+             TOP HUD
+        ============================================== -->
+
+        <div
+            id="top-hud"
+            class="hud-layer"
+        >
+
+            <div class="hud-left">
+
+                <div class="hud-panel">
+
+                    <span class="hud-label">
+                        SCORE
+                    </span>
+
+                    <span
+                        id="score"
+                        class="hud-value"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="hud-panel">
+
+                    <span class="hud-label">
+                        STAGE
+                    </span>
+
+                    <span
+                        id="wave"
+                        class="hud-value"
+                    >
+                        1
+                    </span>
+
+                </div>
+
+
+                <div class="hud-panel">
+
+                    <span class="hud-label">
+                        COMBO
+                    </span>
+
+                    <span
+                        id="combo"
+                        class="hud-value combo-value"
+                    >
+                        x1.0
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="stage-display"
+                class="stage-display"
+            >
+                NORMAL · STAGE 1
+            </div>
+
+
+            <div class="hud-right">
+
+                <div class="level-box">
+
+                    <span>
+                        LV
+                    </span>
+
+                    <strong id="level">
+                        1
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             PLAYER STATUS
+        ============================================== -->
+
+        <div
+            id="player-status"
+            class="player-status"
+        >
+
+            <div class="status-row">
+
+                <span class="status-label">
+                    HP
+                </span>
+
+                <div class="status-bar">
+
+                    <div
+                        id="hp-bar"
+                        class="status-fill hp-fill"
+                    ></div>
+
+                </div>
+
+                <span
+                    id="hp-text"
+                    class="status-number"
+                >
+                    120 / 120
+                </span>
+
+            </div>
+
+
+            <div class="status-row">
+
+                <span class="status-label">
+                    XP
+                </span>
+
+                <div class="status-bar">
+
+                    <div
+                        id="xp-bar"
+                        class="status-fill xp-fill"
+                    ></div>
+
+                </div>
+
+                <span
+                    id="xp-text"
+                    class="status-number"
+                >
+                    0 / 100
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             BOSS HUD
+        ============================================== -->
+
+        <div
+            id="boss-container"
+            class="boss-container hidden"
+        >
+
+            <div class="boss-warning">
+                ☠ BOSS DETECTED ☠
+            </div>
+
+
+            <div class="boss-name">
+                DEMON-X
+            </div>
+
+
+            <div class="boss-hp-wrapper">
+
+                <div
+                    id="boss-hp-bar"
+                    class="boss-hp-bar"
+                ></div>
+
+            </div>
+
+
+            <div
+                id="boss-phase"
+                class="boss-phase"
+            >
+                PHASE 01
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             SKILL HUD
+        ============================================== -->
+
+        <div
+            id="skills-container"
+            class="skills-container"
+        ></div>
+
+
+
+        <!-- =============================================
+             NOTIFICATION
+        ============================================== -->
+
+        <div
+            id="notification"
+            class="notification"
+        >
+            SYSTEM READY
+        </div>
+
+
+
+        <!-- =============================================
+             AIM INDICATOR
+        ============================================== -->
+
+        <div
+            id="aim-indicator"
+            class="aim-indicator"
+        >
+
+            <div class="aim-cross"></div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             MOBILE CONTROLS
+        ============================================== -->
+
+        <div
+            id="mobile-controls"
+            class="mobile-controls"
+        >
+
+            <!-- =========================================
+                 LEFT JOYSTICK
+                 MOVEMENT
+            ========================================== -->
+
+            <div
+                id="movement-joystick"
+                class="joystick-wrapper movement-joystick"
+            >
+
+                <div
+                    class="joystick-label"
+                >
+                    MOVE
+                </div>
+
+
+                <div
+                    id="movement-base"
+                    class="joystick-base"
+                >
+
+                    <div
+                        class="joystick-ring"
+                    ></div>
+
+                    <div
+                        class="joystick-center"
+                    ></div>
+
+                    <div
+                        id="movement-stick"
+                        class="joystick-stick"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 RIGHT JOYSTICK
+                 AIM
+            ========================================== -->
+
+            <div
+                id="aim-joystick"
+                class="joystick-wrapper aim-joystick"
+            >
+
+                <div
+                    class="joystick-label"
+                >
+                    AIM
+                </div>
+
+
+                <div
+                    id="aim-base"
+                    class="joystick-base aim-base"
+                >
+
+                    <div
+                        class="joystick-ring"
+                    ></div>
+
+                    <div
+                        class="joystick-center"
+                    ></div>
+
+                    <div
+                        id="aim-stick"
+                        class="joystick-stick aim-stick"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 DASH BUTTON
+            ========================================== -->
+
+            <button
+                id="dash-button"
+                class="dash-button"
+            >
+
+                <span class="dash-icon">
+                    ⚡
+                </span>
+
+                <span class="dash-text">
+                    DASH
+                </span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =============================================
+             PC CONTROL HINT
+        ============================================== -->
+
+        <div
+            id="pc-controls"
+            class="pc-controls"
+        >
+
+            <span>
+                MOVE
+            </span>
+
+            <b>
+                WASD
+            </b>
+
+            <span>
+                AIM
+            </span>
+
+            <b>
+                MOUSE
+            </b>
+
+            <span>
+                DASH
+            </span>
+
+            <b>
+                SPACE
+            </b>
+
+        </div>
+
+
+
+        <!-- =============================================
+             LEVEL UP SCREEN
+        ============================================== -->
+
+        <div
+            id="levelup-screen"
+            class="overlay hidden"
+        >
+
+            <div class="overlay-panel levelup-panel">
+
+                <div class="overlay-kicker">
+                    SYSTEM EVOLUTION
+                </div>
+
+                <h2>
+                    LEVEL UP
+                </h2>
+
+                <p>
+                    SELECT ONE UPGRADE
+                </p>
+
+
+                <div
+                    id="upgrade-container"
+                    class="upgrade-container"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             STAGE CLEAR
+        ============================================== -->
+
+        <div
+            id="stage-clear-screen"
+            class="overlay hidden"
+        >
+
+            <div class="overlay-panel">
+
+                <div class="overlay-kicker">
+                    MISSION COMPLETE
+                </div>
+
+                <h2>
+                    STAGE CLEAR
+                </h2>
+
+                <p
+                    id="stage-reward"
+                >
+                    +500 SCORE
+                </p>
+
+
+                <button
+                    id="continue-stage"
+                    class="cyber-button"
+                >
+                    NEXT STAGE
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             GAME OVER / VICTORY
+        ============================================== -->
+
+        <div
+            id="gameover-screen"
+            class="overlay hidden"
+        >
+
+            <div class="overlay-panel">
+
+                <div class="overlay-kicker">
+                    SYSTEM STATUS
+                </div>
+
+                <h2
+                    id="gameover-title"
+                >
+                    SYSTEM FAILURE
+                </h2>
+
+                <p
+                    id="gameover-message"
+                >
+                    PLAYER DESTROYED
+                </p>
+
+
+                <div class="final-score-label">
+                    FINAL SCORE
+                </div>
+
+                <div
+                    id="final-score"
+                    class="final-score"
+                >
+                    0
+                </div>
+
+
+                <div class="gameover-buttons">
+
+                    <button
+                        id="restart-button"
+                        class="cyber-button"
+                    >
+                        RESTART
+                    </button>
+
+
+                    <button
+                        id="menu-button"
+                        class="cyber-button secondary"
+                    >
+                        MAIN MENU
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             BOSS WARNING
+        ============================================== -->
+
+        <div
+            id="boss-warning-overlay"
+            class="boss-warning-overlay hidden"
+        >
+
+            <div class="warning-line"></div>
+
+            <div class="warning-text">
+                WARNING
+            </div>
+
+            <div class="warning-subtext">
+                HOSTILE ENTITY DETECTED
+            </div>
+
+            <div class="warning-line"></div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             SKILL WARNING
+        ============================================== -->
+
+        <div
+            id="skill-warning"
+            class="skill-warning hidden"
+        >
+
+            <div
+                id="skill-warning-name"
+                class="skill-warning-name"
+            >
+                INCOMING ATTACK
+            </div>
+
+            <div
+                id="skill-warning-timer"
+                class="skill-warning-timer"
+            >
+                1.0
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             VIGNETTE
+        ============================================== -->
+
+        <div
+            class="screen-vignette"
+        ></div>
+
+
+
+        <!-- =============================================
+             SCANLINES
+        ============================================== -->
+
+        <div
+            class="scanlines"
+        ></div>
+
+    </section>
+
+</div>
+
+
+
+<!-- =====================================================
+     SCRIPT
+===================================================== -->
+
+<script
+    src="script.js"
+></script>
+
+</body>
+</html>
