@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>NEON PARTY RUN</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+    <!-- =========================
+         TOP BAR
+    ========================== -->
+
+    <header class="top-bar">
+
+        <div class="logo">
+            <span>✦</span>
+            NEON PARTY
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <small>SCORE</small>
+                <strong id="score">0</strong>
+            </div>
+
+            <div class="stat">
+                <small>COMBO</small>
+                <strong id="combo">x1</strong>
+            </div>
+
+            <div class="stat">
+                <small>WAVE</small>
+                <strong id="wave">1</strong>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         GAME AREA
+    ========================== -->
+
+    <main id="arena">
+
+        <div class="background-grid"></div>
+
+        <!-- Floating decorations -->
+
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+
+
+        <!-- =========================
+             PLAYER
+        ========================== -->
+
+        <div id="player">
+
+            <div class="player-shadow"></div>
+
+            <div class="player-body">
+
+                <div class="player-face">
+
+                    <span class="eye left"></span>
+                    <span class="eye right"></span>
+
+                    <span class="mouth"></span>
+
+                </div>
+
+                <div class="player-antenna"></div>
+
+            </div>
+
+            <div class="player-glow"></div>
+
+        </div>
+
+
+        <!-- =========================
+             EFFECT LAYER
+        ========================== -->
+
+        <div id="effects"></div>
+
+
+        <!-- =========================
+             ITEM LAYER
+        ========================== -->
+
+        <div id="items"></div>
+
+
+        <!-- =========================
+             ENEMY LAYER
+        ========================== -->
+
+        <div id="enemies"></div>
+
+
+        <!-- =========================
+             PROJECTILES
+        ========================== -->
+
+        <div id="projectiles"></div>
+
+
+        <!-- =========================
+             BOSS
+        ========================== -->
+
+        <div id="boss">
+
+            <div class="boss-name">
+                👑 PARTY BOSS
+            </div>
+
+            <div class="boss-body">
+
+                <div class="boss-eye"></div>
+                <div class="boss-eye"></div>
+
+                <div class="boss-mouth"></div>
+
+            </div>
+
+            <div class="boss-hp">
+
+                <div id="boss-hp-fill"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             HUD
+        ========================== -->
+
+        <div class="hud">
+
+            <div class="hp-box">
+
+                <span>❤️ HP</span>
+
+                <div class="hp-bar">
+                    <div id="hp-fill"></div>
+                </div>
+
+                <b id="hp-text">100</b>
+
+            </div>
+
+
+            <div class="powerups" id="powerups"></div>
+
+        </div>
+
+
+        <!-- =========================
+             WAVE MESSAGE
+        ========================== -->
+
+        <div id="wave-message">
+            WAVE 1
+        </div>
+
+
+        <!-- =========================
+             JOYSTICK
+        ========================== -->
+
+        <div id="joystick">
+
+            <div id="joystick-knob"></div>
+
+        </div>
+
+
+        <!-- =========================
+             ACTION BUTTON
+        ========================== -->
+
+        <button id="special-button">
+            ⚡
+            <span>POWER</span>
+        </button>
+
+
+        <!-- =========================
+             START SCREEN
+        ========================== -->
+
+        <section id="start-screen">
+
+            <div class="start-card">
+
+                <div class="mini-title">
+                    ✦ WELCOME TO
+                </div>
+
+                <h1>
+                    NEON
+                    <span>PARTY</span>
+                </h1>
+
+                <p>
+                    RUN • SHOOT • COLLECT • HAVE FUN
+                </p>
+
+                <button id="start-button">
+                    PLAY NOW
+                </button>
+
+                <div class="controls-info">
+
+                    <span>🕹️ JOYSTICK</span>
+                    <span>⚡ AUTO FIRE</span>
+                    <span>⭐ COLLECT</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GAME OVER
+        ========================== -->
+
+        <section id="game-over">
+
+            <div class="gameover-card">
+
+                <div class="gameover-icon">
+                    💥
+                </div>
+
+                <h2>
+                    OH NO!
+                </h2>
+
+                <p>
+                    Party ended!
+                </p>
+
+                <div class="final-score">
+
+                    <small>FINAL SCORE</small>
+
+                    <strong id="final-score">
+                        0
+                    </strong>
+
+                </div>
+
+                <button id="restart-button">
+                    TRY AGAIN
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             VICTORY
+        ========================== -->
+
+        <section id="victory">
+
+            <div class="victory-card">
+
+                <div class="fireworks">
+                    🎉 ✨ 🎉
+                </div>
+
+                <h2>
+                    PARTY COMPLETE!
+                </h2>
+
+                <p>
+                    You are the Neon Champion!
+                </p>
+
+                <div class="final-score">
+
+                    <small>SCORE</small>
+
+                    <strong id="victory-score">
+                        0
+                    </strong>
+
+                </div>
+
+                <button id="victory-button">
+                    PLAY AGAIN
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
