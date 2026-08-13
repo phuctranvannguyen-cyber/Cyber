@@ -2,327 +2,350 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        content="width=device-width,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 user-scalable=no"
     >
 
-    <title>NEON PARTY RUN</title>
+    <title>Deadline Mayhem</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="game">
-
     <!-- =========================
-         TOP BAR
+         GAME WRAPPER
     ========================== -->
 
-    <header class="top-bar">
-
-        <div class="logo">
-            <span>✦</span>
-            NEON PARTY
-        </div>
-
-        <div class="stats">
-
-            <div class="stat">
-                <small>SCORE</small>
-                <strong id="score">0</strong>
-            </div>
-
-            <div class="stat">
-                <small>COMBO</small>
-                <strong id="combo">x1</strong>
-            </div>
-
-            <div class="stat">
-                <small>WAVE</small>
-                <strong id="wave">1</strong>
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- =========================
-         GAME AREA
-    ========================== -->
-
-    <main id="arena">
-
-        <div class="background-grid"></div>
-
-        <!-- Floating decorations -->
-
-        <div class="bubble bubble-1"></div>
-        <div class="bubble bubble-2"></div>
-        <div class="bubble bubble-3"></div>
-
+    <main id="game">
 
         <!-- =========================
-             PLAYER
+             TOP HUD
         ========================== -->
 
-        <div id="player">
+        <header class="hud">
 
-            <div class="player-shadow"></div>
+            <div class="player-info">
 
-            <div class="player-body">
-
-                <div class="player-face">
-
-                    <span class="eye left"></span>
-                    <span class="eye right"></span>
-
-                    <span class="mouth"></span>
-
+                <div class="avatar">
+                    🧑‍💻
                 </div>
 
-                <div class="player-antenna"></div>
-
-            </div>
-
-            <div class="player-glow"></div>
-
-        </div>
-
-
-        <!-- =========================
-             EFFECT LAYER
-        ========================== -->
-
-        <div id="effects"></div>
-
-
-        <!-- =========================
-             ITEM LAYER
-        ========================== -->
-
-        <div id="items"></div>
-
-
-        <!-- =========================
-             ENEMY LAYER
-        ========================== -->
-
-        <div id="enemies"></div>
-
-
-        <!-- =========================
-             PROJECTILES
-        ========================== -->
-
-        <div id="projectiles"></div>
-
-
-        <!-- =========================
-             BOSS
-        ========================== -->
-
-        <div id="boss">
-
-            <div class="boss-name">
-                👑 PARTY BOSS
-            </div>
-
-            <div class="boss-body">
-
-                <div class="boss-eye"></div>
-                <div class="boss-eye"></div>
-
-                <div class="boss-mouth"></div>
-
-            </div>
-
-            <div class="boss-hp">
-
-                <div id="boss-hp-fill"></div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =========================
-             HUD
-        ========================== -->
-
-        <div class="hud">
-
-            <div class="hp-box">
-
-                <span>❤️ HP</span>
-
-                <div class="hp-bar">
-                    <div id="hp-fill"></div>
+                <div class="player-name">
+                    NHÂN VIÊN
                 </div>
 
-                <b id="hp-text">100</b>
+                <div class="hp-box">
+                    <div class="hp-label">
+                        HP
+                    </div>
+
+                    <div class="hp-bar">
+                        <div id="hp-fill"></div>
+                    </div>
+
+                    <span id="hp-text">
+                        100 / 100
+                    </span>
+                </div>
 
             </div>
 
 
-            <div class="powerups" id="powerups"></div>
+            <div class="stats">
 
-        </div>
+                <div class="stat">
+                    <span>ĐIỂM</span>
+                    <strong id="score">
+                        0
+                    </strong>
+                </div>
 
+                <div class="stat">
+                    <span>COMBO</span>
+                    <strong id="combo">
+                        x0
+                    </strong>
+                </div>
 
-        <!-- =========================
-             WAVE MESSAGE
-        ========================== -->
+                <div class="stat">
+                    <span>WAVE</span>
+                    <strong id="wave">
+                        1
+                    </strong>
+                </div>
 
-        <div id="wave-message">
-            WAVE 1
-        </div>
+            </div>
 
-
-        <!-- =========================
-             JOYSTICK
-        ========================== -->
-
-        <div id="joystick">
-
-            <div id="joystick-knob"></div>
-
-        </div>
-
-
-        <!-- =========================
-             ACTION BUTTON
-        ========================== -->
-
-        <button id="special-button">
-            ⚡
-            <span>POWER</span>
-        </button>
+        </header>
 
 
         <!-- =========================
-             START SCREEN
+             GAME CANVAS
         ========================== -->
 
-        <section id="start-screen">
+        <section id="game-area">
 
-            <div class="start-card">
+            <canvas id="gameCanvas"></canvas>
 
-                <div class="mini-title">
-                    ✦ WELCOME TO
+
+            <!-- =========================
+                 EVENT MESSAGE
+            ========================== -->
+
+            <div id="event-message">
+                <div id="event-title">
+                    THỨ HAI ĐÃ ĐẾN
+                </div>
+
+                <div id="event-subtitle">
+                    Chúc bạn may mắn...
+                </div>
+            </div>
+
+
+            <!-- =========================
+                 BOSS BAR
+            ========================== -->
+
+            <div id="boss-ui">
+
+                <div class="boss-name">
+                    👔 SẾP TỔNG
+                </div>
+
+                <div class="boss-bar">
+                    <div id="boss-fill"></div>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 MOBILE JOYSTICK
+            ========================== -->
+
+            <div id="joystick">
+
+                <div id="joystick-stick"></div>
+
+            </div>
+
+
+            <!-- =========================
+                 MOBILE ACTION
+            ========================== -->
+
+            <button
+                id="coffee-button"
+                class="mobile-action"
+            >
+                ☕
+            </button>
+
+
+            <button
+                id="special-button"
+                class="mobile-action special"
+            >
+                💥
+            </button>
+
+
+            <!-- =========================
+                 PAUSE
+            ========================== -->
+
+            <button
+                id="pause-button"
+                class="pause-button"
+            >
+                II
+            </button>
+
+
+            <!-- =========================
+                 START SCREEN
+            ========================== -->
+
+            <div id="start-screen">
+
+                <div class="logo-small">
+                    DEADLINE
                 </div>
 
                 <h1>
-                    NEON
-                    <span>PARTY</span>
+                    MAYHEM
                 </h1>
 
-                <p>
-                    RUN • SHOOT • COLLECT • HAVE FUN
+                <p class="tagline">
+                    Một ngày làm việc bình thường...
+                    chắc chắn là không.
                 </p>
 
                 <button id="start-button">
-                    PLAY NOW
+                    ĐI LÀM
                 </button>
 
-                <div class="controls-info">
+                <div class="controls-hint">
 
-                    <span>🕹️ JOYSTICK</span>
-                    <span>⚡ AUTO FIRE</span>
-                    <span>⭐ COLLECT</span>
+                    <span>
+                        🖥️ PC: WASD / MŨI TÊN
+                    </span>
+
+                    <span>
+                        📱 MOBILE: JOYSTICK
+                    </span>
 
                 </div>
 
             </div>
 
-        </section>
 
+            <!-- =========================
+                 GAME OVER
+            ========================== -->
 
-        <!-- =========================
-             GAME OVER
-        ========================== -->
+            <div id="game-over">
 
-        <section id="game-over">
-
-            <div class="gameover-card">
-
-                <div class="gameover-icon">
-                    💥
+                <div class="game-over-icon">
+                    💀
                 </div>
 
                 <h2>
-                    OH NO!
+                    BẠN ĐÃ KIỆT SỨC
                 </h2>
 
-                <p>
-                    Party ended!
+                <p id="game-over-text">
+                    Deadline đã chiến thắng.
                 </p>
 
                 <div class="final-score">
-
-                    <small>FINAL SCORE</small>
-
+                    SCORE:
                     <strong id="final-score">
                         0
                     </strong>
-
                 </div>
 
                 <button id="restart-button">
-                    TRY AGAIN
+                    ĐI LÀM LẠI
                 </button>
 
+            </div>
+
+
+            <!-- =========================
+                 WIN SCREEN
+            ========================== -->
+
+            <div id="win-screen">
+
+                <div class="win-icon">
+                    🏆
+                </div>
+
+                <h2>
+                    BẠN ĐÃ SỐNG SÓT!
+                </h2>
+
+                <p>
+                    Một ngày làm việc kết thúc.
+                </p>
+
+                <p class="win-joke">
+                    Nhưng ngày mai...
+                    vẫn phải đi làm.
+                </p>
+
+                <div class="final-score">
+                    SCORE:
+                    <strong id="win-score">
+                        0
+                    </strong>
+                </div>
+
+                <button id="play-again">
+                    LÀM LẠI
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 ITEM NOTIFICATION
+            ========================== -->
+
+            <div id="item-popup">
+                ☕ CÀ PHÊ +++
             </div>
 
         </section>
 
 
         <!-- =========================
-             VICTORY
+             BOTTOM HUD
         ========================== -->
 
-        <section id="victory">
+        <footer class="bottom-hud">
 
-            <div class="victory-card">
+            <div class="skill-list">
 
-                <div class="fireworks">
-                    🎉 ✨ 🎉
+                <div class="skill">
+                    <span class="skill-icon">
+                        ☕
+                    </span>
+
+                    <span>
+                        CÀ PHÊ
+                    </span>
                 </div>
 
-                <h2>
-                    PARTY COMPLETE!
-                </h2>
+                <div class="skill">
+                    <span class="skill-icon">
+                        💼
+                    </span>
 
-                <p>
-                    You are the Neon Champion!
-                </p>
-
-                <div class="final-score">
-
-                    <small>SCORE</small>
-
-                    <strong id="victory-score">
-                        0
-                    </strong>
-
+                    <span>
+                        TĂNG CA
+                    </span>
                 </div>
 
-                <button id="victory-button">
-                    PLAY AGAIN
-                </button>
+                <div class="skill">
+                    <span class="skill-icon">
+                        💤
+                    </span>
+
+                    <span>
+                        NGỦ
+                    </span>
+                </div>
 
             </div>
 
-        </section>
+
+            <div class="objective">
+
+                <span>
+                    NHIỆM VỤ:
+                </span>
+
+                <strong id="objective">
+                    SỐNG SÓT QUA WAVE 1
+                </strong>
+
+            </div>
+
+        </footer>
 
     </main>
 
-</div>
 
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
