@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>CYBER // FALL</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         MAIN GAME
+    ====================================================== -->
+
+    <main id="game">
+
+        <!-- ===============================
+             MENU
+        ================================ -->
+
+        <section id="menu-screen" class="screen">
+
+            <div class="menu-panel">
+
+                <div class="game-logo">
+                    CYBER<span>//</span>FALL
+                </div>
+
+                <div class="game-subtitle">
+                    DEMON PROTOCOL
+                </div>
+
+
+                <div class="difficulty-title">
+                    SELECT DIFFICULTY
+                </div>
+
+
+                <div class="difficulty-list">
+
+                    <button
+                        class="difficulty-card"
+                        data-difficulty="easy"
+                    >
+
+                        <span class="difficulty-number">
+                            01
+                        </span>
+
+                        <span class="difficulty-name">
+                            EASY
+                        </span>
+
+                        <span class="difficulty-description">
+                            Training Protocol
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="difficulty-card"
+                        data-difficulty="normal"
+                    >
+
+                        <span class="difficulty-number">
+                            02
+                        </span>
+
+                        <span class="difficulty-name">
+                            NORMAL
+                        </span>
+
+                        <span class="difficulty-description">
+                            Combat Protocol
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="difficulty-card"
+                        data-difficulty="hard"
+                    >
+
+                        <span class="difficulty-number">
+                            03
+                        </span>
+
+                        <span class="difficulty-name">
+                            HARD
+                        </span>
+
+                        <span class="difficulty-description">
+                            Nightmare Protocol
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="controls-preview">
+
+                    <div>
+                        <b>PC</b>
+                        <span>WASD / ARROWS</span>
+                    </div>
+
+                    <div>
+                        <b>MOBILE</b>
+                        <span>VIRTUAL JOYSTICK</span>
+                    </div>
+
+                    <div>
+                        <b>WEAPON</b>
+                        <span>AUTO FIRE</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===============================
+             GAME SCREEN
+        ================================ -->
+
+        <section
+            id="game-screen"
+            class="screen hidden"
+        >
+
+            <canvas id="game-canvas"></canvas>
+
+
+            <!-- ===========================
+                 TOP HUD
+            ============================ -->
+
+            <div id="top-hud">
+
+                <div class="hud-block">
+
+                    <span class="hud-label">
+                        SCORE
+                    </span>
+
+                    <span id="score">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="hud-block">
+
+                    <span class="hud-label">
+                        STAGE
+                    </span>
+
+                    <span id="wave">
+                        1
+                    </span>
+
+                </div>
+
+
+                <div class="hud-block combo">
+
+                    <span class="hud-label">
+                        COMBO
+                    </span>
+
+                    <span id="combo">
+                        x1
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ===========================
+                 STAGE DISPLAY
+            ============================ -->
+
+            <div id="stage-display">
+                NORMAL · STAGE 1
+            </div>
+
+
+            <!-- ===========================
+                 PLAYER HUD
+            ============================ -->
+
+            <div id="player-hud">
+
+                <div class="level-row">
+
+                    <span>
+                        LV
+                        <strong id="level">
+                            1
+                        </strong>
+                    </span>
+
+                </div>
+
+
+                <div class="bar-container">
+
+                    <div
+                        id="hp-bar"
+                        class="bar hp"
+                    ></div>
+
+                </div>
+
+                <div
+                    id="hp-text"
+                    class="bar-text"
+                >
+                    120 / 120
+                </div>
+
+
+                <div class="bar-container">
+
+                    <div
+                        id="xp-bar"
+                        class="bar xp"
+                    ></div>
+
+                </div>
+
+                <div
+                    id="xp-text"
+                    class="bar-text"
+                >
+                    0 / 100
+                </div>
+
+            </div>
+
+
+            <!-- ===========================
+                 BOSS HUD
+            ============================ -->
+
+            <div
+                id="boss-container"
+                class="hidden"
+            >
+
+                <div class="boss-name">
+                    ☠ DEMON-X ☠
+                </div>
+
+                <div class="boss-bar-container">
+
+                    <div
+                        id="boss-hp-bar"
+                        class="boss-bar"
+                    ></div>
+
+                </div>
+
+                <div id="boss-phase">
+                    PHASE 01
+                </div>
+
+            </div>
+
+
+            <!-- ===========================
+                 SKILLS
+            ============================ -->
+
+            <div id="skills-container"></div>
+
+
+            <!-- ===========================
+                 NOTIFICATION
+            ============================ -->
+
+            <div id="notification"></div>
+
+
+            <!-- =================================================
+                 MOBILE CONTROLS
+            ================================================== -->
+
+            <div id="mobile-controls">
+
+                <!-- JOYSTICK -->
+
+                <div
+                    id="joystick-area"
+                    class="touch-control"
+                >
+
+                    <div id="joystick-base">
+
+                        <div id="joystick-stick"></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DASH BUTTON -->
+
+                <button
+                    id="dash-button"
+                    class="mobile-action-button"
+                >
+
+                    <span class="dash-icon">
+                        ⚡
+                    </span>
+
+                    <span>
+                        DASH
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- ===========================
+                 MOBILE AUTO AIM INDICATOR
+            ============================ -->
+
+            <div id="mobile-aim-indicator">
+
+                <span>
+                    AUTO
+                </span>
+
+                <span>
+                    AIM
+                </span>
+
+            </div>
+
+
+            <!-- ===========================
+                 LEVEL UP
+            ============================ -->
+
+            <div
+                id="levelup-screen"
+                class="overlay hidden"
+            >
+
+                <div class="overlay-panel">
+
+                    <div class="overlay-title">
+                        LEVEL UP
+                    </div>
+
+                    <div class="overlay-subtitle">
+                        SELECT UPGRADE
+                    </div>
+
+                    <div
+                        id="upgrade-container"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ===========================
+                 STAGE CLEAR
+            ============================ -->
+
+            <div
+                id="stage-clear-screen"
+                class="overlay hidden"
+            >
+
+                <div class="overlay-panel">
+
+                    <div
+                        id="stage-clear-title"
+                        class="overlay-title"
+                    >
+                        STAGE COMPLETE
+                    </div>
+
+                    <div
+                        id="stage-reward"
+                        class="stage-reward"
+                    >
+                        +500 SCORE
+                    </div>
+
+                    <button
+                        id="continue-stage"
+                        class="cyber-button"
+                    >
+                        CONTINUE
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ===========================
+                 GAME OVER / VICTORY
+            ============================ -->
+
+            <div
+                id="gameover-screen"
+                class="overlay hidden"
+            >
+
+                <div class="overlay-panel">
+
+                    <div
+                        id="gameover-title"
+                        class="overlay-title"
+                    >
+                        SYSTEM FAILURE
+                    </div>
+
+                    <div
+                        id="gameover-message"
+                        class="overlay-subtitle"
+                    >
+                        PLAYER DESTROYED
+                    </div>
+
+
+                    <div class="final-score-label">
+                        FINAL SCORE
+                    </div>
+
+                    <div
+                        id="final-score"
+                        class="final-score"
+                    >
+                        0
+                    </div>
+
+
+                    <div class="gameover-buttons">
+
+                        <button
+                            id="restart-button"
+                            class="cyber-button"
+                        >
+                            RESTART
+                        </button>
+
+                        <button
+                            id="menu-button"
+                            class="cyber-button secondary"
+                        >
+                            MAIN MENU
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         SCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

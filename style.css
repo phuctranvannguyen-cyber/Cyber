@@ -1,0 +1,1853 @@
+/* =========================================================
+   CYBER // FALL
+   STYLE.CSS
+   PC + MOBILE
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+body {
+    background: #01040a;
+    color: #dffcff;
+    font-family:
+        "Courier New",
+        Consolas,
+        monospace;
+
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+#game {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   SCREEN
+========================================================= */
+
+.screen {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+#menu-screen {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 246, 255, 0.08),
+            transparent 45%
+        ),
+        #01040a;
+}
+
+
+#menu-screen::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 246, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 246, 255, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    pointer-events: none;
+}
+
+
+.menu-panel {
+    position: relative;
+
+    width: min(650px, 92vw);
+
+    padding: 45px 35px;
+
+    border: 1px solid
+        rgba(0, 246, 255, 0.35);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(5, 18, 29, 0.96),
+            rgba(2, 7, 14, 0.96)
+        );
+
+    box-shadow:
+        0 0 40px
+        rgba(0, 246, 255, 0.08),
+        inset 0 0 30px
+        rgba(0, 246, 255, 0.025);
+}
+
+
+.menu-panel::before,
+.menu-panel::after {
+    content: "";
+
+    position: absolute;
+
+    width: 25px;
+    height: 25px;
+
+    border-color: #00f6ff;
+}
+
+
+.menu-panel::before {
+    top: -1px;
+    left: -1px;
+
+    border-top: 2px solid;
+    border-left: 2px solid;
+}
+
+
+.menu-panel::after {
+    bottom: -1px;
+    right: -1px;
+
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.game-logo {
+    text-align: center;
+
+    font-size: clamp(
+        42px,
+        8vw,
+        78px
+    );
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    color: #dffcff;
+
+    text-shadow:
+        0 0 8px #00f6ff,
+        0 0 25px
+        rgba(0, 246, 255, 0.7);
+}
+
+
+.game-logo span {
+    color: #ff00c8;
+
+    text-shadow:
+        0 0 10px #ff00c8,
+        0 0 25px
+        rgba(255, 0, 200, 0.7);
+}
+
+
+.game-subtitle {
+    margin-top: 8px;
+
+    text-align: center;
+
+    color: #6d8b96;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================================
+   DIFFICULTY
+========================================================= */
+
+.difficulty-title {
+    margin-top: 42px;
+    margin-bottom: 15px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    color: #718e99;
+}
+
+
+.difficulty-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+.difficulty-card {
+    position: relative;
+
+    min-height: 125px;
+
+    padding: 18px 12px;
+
+    border: 1px solid
+        rgba(0, 246, 255, 0.2);
+
+    background:
+        rgba(0, 246, 255, 0.025);
+
+    color: #bceaf0;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.difficulty-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #00f6ff;
+
+    background:
+        rgba(0, 246, 255, 0.07);
+
+    box-shadow:
+        0 0 25px
+        rgba(0, 246, 255, 0.12);
+}
+
+
+.difficulty-card:active {
+    transform: scale(0.97);
+}
+
+
+.difficulty-number {
+    display: block;
+
+    color: #00f6ff;
+
+    font-size: 11px;
+}
+
+
+.difficulty-name {
+    display: block;
+
+    margin-top: 15px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+.difficulty-description {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #607b84;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   CONTROL PREVIEW
+========================================================= */
+
+.controls-preview {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 28px;
+
+    margin-top: 30px;
+
+    color: #506a73;
+
+    font-size: 9px;
+
+    text-align: center;
+}
+
+
+.controls-preview div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.controls-preview b {
+    color: #00f6ff;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   GAME SCREEN
+========================================================= */
+
+#game-screen {
+    background: #01040a;
+}
+
+
+#game-canvas {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    touch-action: none;
+}
+
+
+/* =========================================================
+   TOP HUD
+========================================================= */
+
+#top-hud {
+    position: absolute;
+
+    top: 18px;
+    left: 20px;
+    right: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+.hud-block {
+    min-width: 90px;
+
+    padding: 8px 14px;
+
+    border-left: 2px solid #00f6ff;
+
+    background:
+        rgba(1, 10, 17, 0.75);
+
+    box-shadow:
+        inset 0 0 15px
+        rgba(0, 246, 255, 0.04);
+}
+
+
+.hud-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #55737d;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.hud-block > span:last-child {
+    color: #dffcff;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+.combo {
+    border-left-color: #ff00c8;
+
+    text-align: right;
+}
+
+
+.combo > span:last-child {
+    color: #ff00c8;
+
+    text-shadow:
+        0 0 10px
+        rgba(255, 0, 200, 0.8);
+}
+
+
+/* =========================================================
+   STAGE DISPLAY
+========================================================= */
+
+#stage-display {
+    position: absolute;
+
+    top: 78px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 5px 14px;
+
+    color: #557d86;
+
+    border-bottom: 1px solid
+        rgba(0, 246, 255, 0.25);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   PLAYER HUD
+========================================================= */
+
+#player-hud {
+    position: absolute;
+
+    left: 20px;
+    bottom: 20px;
+
+    width: 220px;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+.level-row {
+    margin-bottom: 5px;
+
+    color: #6f8e98;
+
+    font-size: 10px;
+}
+
+
+.level-row strong {
+    color: #00f6ff;
+
+    font-size: 16px;
+}
+
+
+.bar-container {
+    position: relative;
+
+    width: 100%;
+    height: 8px;
+
+    margin-top: 5px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    background: #061018;
+}
+
+
+.bar {
+    width: 100%;
+    height: 100%;
+
+    transition:
+        width 0.15s ease;
+}
+
+
+.bar.hp {
+    background: #00f6ff;
+
+    box-shadow:
+        0 0 10px
+        rgba(0, 246, 255, 0.7);
+}
+
+
+.bar.xp {
+    background: #ff00c8;
+
+    box-shadow:
+        0 0 10px
+        rgba(255, 0, 200, 0.7);
+}
+
+
+.bar-text {
+    margin-top: 2px;
+
+    color: #4f6c75;
+
+    font-size: 8px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   BOSS HUD
+========================================================= */
+
+#boss-container {
+    position: absolute;
+
+    top: 105px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(520px, 70vw);
+
+    text-align: center;
+
+    z-index: 15;
+
+    pointer-events: none;
+}
+
+
+.boss-name {
+    margin-bottom: 8px;
+
+    color: #ff315d;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 12px
+        rgba(255, 49, 93, 0.8);
+}
+
+
+.boss-bar-container {
+    width: 100%;
+    height: 12px;
+
+    padding: 2px;
+
+    border:
+        1px solid
+        rgba(255, 0, 200, 0.45);
+
+    background:
+        rgba(0, 0, 0, 0.75);
+}
+
+
+.boss-bar {
+    width: 100%;
+    height: 100%;
+
+    background: #ff00c8;
+
+    box-shadow:
+        0 0 15px
+        rgba(255, 0, 200, 0.7);
+
+    transition:
+        width 0.15s ease;
+}
+
+
+#boss-phase {
+    margin-top: 5px;
+
+    color: #755d78;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+#skills-container {
+    position: absolute;
+
+    right: 20px;
+    bottom: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 5px;
+
+    max-width: 180px;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+.skill-item {
+    padding: 5px 9px;
+
+    border-right:
+        2px solid #00f6ff;
+
+    background:
+        rgba(1, 12, 20, 0.75);
+
+    color: #8dcbd4;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+#notification {
+    position: absolute;
+
+    top: 48%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.9);
+
+    padding: 12px 22px;
+
+    border:
+        1px solid #00f6ff;
+
+    background:
+        rgba(0, 10, 17, 0.9);
+
+    color: #dffcff;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 50;
+
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+
+    box-shadow:
+        0 0 25px
+        rgba(0, 246, 255, 0.2);
+}
+
+
+#notification.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* =========================================================
+   MOBILE CONTROLS
+========================================================= */
+
+#mobile-controls {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   JOYSTICK
+========================================================= */
+
+#joystick-area {
+    position: absolute;
+
+    left: 22px;
+    bottom: 22px;
+
+    width: 155px;
+    height: 155px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: auto;
+
+    touch-action: none;
+}
+
+
+#joystick-base {
+    position: relative;
+
+    width: 125px;
+    height: 125px;
+
+    border:
+        2px solid
+        rgba(0, 246, 255, 0.25);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 246, 255, 0.08),
+            rgba(0, 246, 255, 0.015)
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(0, 246, 255, 0.06),
+        inset 0 0 25px
+        rgba(0, 246, 255, 0.04);
+}
+
+
+#joystick-base::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border:
+        1px dashed
+        rgba(0, 246, 255, 0.15);
+
+    border-radius: 50%;
+}
+
+
+#joystick-base::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 4px;
+    height: 4px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #00f6ff;
+
+    box-shadow:
+        0 0 10px #00f6ff;
+}
+
+
+#joystick-stick {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 58px;
+    height: 58px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        2px solid #00f6ff;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(0, 246, 255, 0.4),
+            rgba(0, 246, 255, 0.08)
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 246, 255, 0.35);
+
+    transition:
+        transform 0.04s linear;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   DASH BUTTON
+========================================================= */
+
+#dash-button {
+    position: absolute;
+
+    right: 28px;
+    bottom: 38px;
+
+    width: 82px;
+    height: 82px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 3px;
+
+    border:
+        2px solid
+        rgba(255, 0, 200, 0.6);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 0, 200, 0.15),
+            rgba(255, 0, 200, 0.025)
+        );
+
+    color: #ff7de5;
+
+    font-family: inherit;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 0 25px
+        rgba(255, 0, 200, 0.12);
+
+    pointer-events: auto;
+
+    touch-action: manipulation;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.1s ease;
+}
+
+
+#dash-button:active {
+    transform: scale(0.88);
+
+    background:
+        rgba(255, 0, 200, 0.25);
+}
+
+
+.dash-icon {
+    font-size: 25px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 10px #ff00c8;
+}
+
+
+/* =========================================================
+   MOBILE AIM
+========================================================= */
+
+#mobile-aim-indicator {
+    position: absolute;
+
+    right: 24px;
+    top: 50%;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 2px;
+
+    color: rgba(0, 246, 255, 0.4);
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   OVERLAYS
+========================================================= */
+
+.overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 3, 8, 0.78);
+
+    backdrop-filter:
+        blur(5px);
+
+    z-index: 100;
+}
+
+
+.overlay-panel {
+    width: min(650px, 92vw);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(0, 246, 255, 0.35);
+
+    background:
+        rgba(2, 10, 17, 0.97);
+
+    text-align: center;
+
+    box-shadow:
+        0 0 50px
+        rgba(0, 246, 255, 0.08);
+}
+
+
+.overlay-title {
+    color: #dffcff;
+
+    font-size: clamp(
+        25px,
+        5vw,
+        42px
+    );
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 15px
+        rgba(0, 246, 255, 0.7);
+}
+
+
+.overlay-subtitle {
+    margin-top: 10px;
+
+    color: #607d86;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+.stage-reward {
+    margin: 25px 0;
+
+    color: #00f6ff;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   UPGRADE CARDS
+========================================================= */
+
+#upgrade-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+.upgrade-card {
+    min-height: 160px;
+
+    padding: 18px 12px;
+
+    border:
+        1px solid
+        rgba(0, 246, 255, 0.2);
+
+    background:
+        rgba(0, 246, 255, 0.025);
+
+    color: #dffcff;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.upgrade-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #00f6ff;
+
+    background:
+        rgba(0, 246, 255, 0.08);
+}
+
+
+.upgrade-card:active {
+    transform: scale(0.97);
+}
+
+
+.upgrade-type {
+    color: #00f6ff;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.upgrade-name {
+    margin-top: 20px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+
+.upgrade-description {
+    margin-top: 15px;
+
+    color: #718b94;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CYBER BUTTON
+========================================================= */
+
+.cyber-button {
+    min-width: 180px;
+
+    padding: 13px 22px;
+
+    border:
+        1px solid #00f6ff;
+
+    background:
+        rgba(0, 246, 255, 0.05);
+
+    color: #00f6ff;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+}
+
+
+.cyber-button:hover {
+    background:
+        rgba(0, 246, 255, 0.13);
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 246, 255, 0.2);
+}
+
+
+.cyber-button:active {
+    transform: scale(0.96);
+}
+
+
+.cyber-button.secondary {
+    border-color: #ff00c8;
+
+    color: #ff00c8;
+}
+
+
+.gameover-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+
+/* =========================================================
+   FINAL SCORE
+========================================================= */
+
+.final-score-label {
+    margin-top: 30px;
+
+    color: #566e77;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.final-score {
+    margin-top: 5px;
+
+    color: #00f6ff;
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 15px
+        rgba(0, 246, 255, 0.7);
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 900px) {
+
+    #mobile-controls {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET + MOBILE
+========================================================= */
+
+@media (max-width: 899px) {
+
+    #mobile-aim-indicator {
+        display: flex;
+    }
+
+
+    #player-hud {
+        bottom: 15px;
+        left: 15px;
+
+        width: 175px;
+    }
+
+
+    #skills-container {
+        right: 15px;
+        bottom: 15px;
+
+        max-width: 130px;
+    }
+
+
+    .skill-item {
+        font-size: 7px;
+
+        padding: 4px 7px;
+    }
+
+
+    #top-hud {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+    }
+
+
+    .hud-block {
+        min-width: 70px;
+
+        padding: 6px 9px;
+    }
+
+
+    .hud-block > span:last-child {
+        font-size: 14px;
+    }
+
+
+    #stage-display {
+        top: 65px;
+
+        font-size: 8px;
+    }
+
+
+    #boss-container {
+        top: 88px;
+
+        width: 75vw;
+    }
+
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .menu-panel {
+        width: 92vw;
+
+        padding:
+            30px 18px;
+    }
+
+
+    .game-logo {
+        font-size: 42px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .game-subtitle {
+        font-size: 8px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .difficulty-list {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+
+    .difficulty-card {
+        min-height: 70px;
+
+        display: grid;
+
+        grid-template-columns:
+            35px 1fr;
+
+        grid-template-rows:
+            1fr 1fr;
+
+        text-align: left;
+
+        padding: 10px 12px;
+    }
+
+
+    .difficulty-number {
+        grid-row:
+            1 / 3;
+
+        align-self: center;
+    }
+
+
+    .difficulty-name {
+        margin-top: 0;
+
+        font-size: 14px;
+    }
+
+
+    .difficulty-description {
+        margin-top: 2px;
+
+        font-size: 8px;
+    }
+
+
+    .controls-preview {
+        gap: 12px;
+
+        margin-top: 18px;
+    }
+
+
+    .controls-preview span {
+        font-size: 7px;
+    }
+
+
+    #top-hud {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+    }
+
+
+    .hud-block {
+        min-width: 60px;
+
+        padding: 5px 7px;
+    }
+
+
+    .hud-label {
+        font-size: 7px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .hud-block > span:last-child {
+        font-size: 12px;
+    }
+
+
+    #stage-display {
+        top: 53px;
+
+        padding:
+            4px 8px;
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
+
+    #player-hud {
+        left: 10px;
+        bottom: 10px;
+
+        width: 145px;
+    }
+
+
+    .bar-container {
+        height: 7px;
+    }
+
+
+    #skills-container {
+        right: 10px;
+        bottom: 10px;
+
+        max-width: 115px;
+    }
+
+
+    .skill-item {
+        font-size: 6px;
+
+        padding: 3px 5px;
+    }
+
+
+    #boss-container {
+        top: 70px;
+
+        width: 82vw;
+    }
+
+
+    .boss-name {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .boss-bar-container {
+        height: 9px;
+    }
+
+
+    .boss-phase {
+        font-size: 6px;
+    }
+
+
+    #notification {
+        width: max-content;
+
+        max-width: 80vw;
+
+        padding:
+            9px 13px;
+
+        font-size: 8px;
+
+        letter-spacing: 1px;
+
+        text-align: center;
+    }
+
+
+    #joystick-area {
+        left: 5px;
+        bottom: 5px;
+
+        width: 145px;
+        height: 145px;
+    }
+
+
+    #joystick-base {
+        width: 115px;
+        height: 115px;
+    }
+
+
+    #joystick-stick {
+        width: 54px;
+        height: 54px;
+    }
+
+
+    #dash-button {
+        right: 18px;
+        bottom: 25px;
+
+        width: 70px;
+        height: 70px;
+    }
+
+
+    .dash-icon {
+        font-size: 21px;
+    }
+
+
+    #mobile-aim-indicator {
+        right: 18px;
+
+        font-size: 6px;
+    }
+
+
+    .overlay {
+        padding: 10px;
+    }
+
+
+    .overlay-panel {
+        width: 94vw;
+
+        padding: 25px 15px;
+    }
+
+
+    #upgrade-container {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+
+    .upgrade-card {
+        min-height: 85px;
+
+        display: grid;
+
+        grid-template-columns:
+            90px 1fr;
+
+        grid-template-rows:
+            1fr 1fr;
+
+        text-align: left;
+
+        padding: 10px;
+    }
+
+
+    .upgrade-type {
+        grid-row:
+            1 / 3;
+
+        align-self: center;
+    }
+
+
+    .upgrade-name {
+        margin-top: 0;
+
+        font-size: 12px;
+    }
+
+
+    .upgrade-description {
+        margin-top: 2px;
+
+        font-size: 8px;
+    }
+
+
+    .gameover-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .cyber-button {
+        width: 100%;
+
+        max-width: 250px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    #joystick-area {
+        width: 125px;
+        height: 125px;
+    }
+
+
+    #joystick-base {
+        width: 100px;
+        height: 100px;
+    }
+
+
+    #joystick-stick {
+        width: 48px;
+        height: 48px;
+    }
+
+
+    #dash-button {
+        width: 62px;
+        height: 62px;
+
+        right: 12px;
+        bottom: 20px;
+    }
+
+
+    #player-hud {
+        width: 125px;
+    }
+
+
+    .skill-item {
+        font-size: 5px;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONE
+========================================================= */
+
+@media (
+    max-height: 500px
+) and (
+    orientation: landscape
+) {
+
+    #joystick-area {
+        bottom: 5px;
+        left: 5px;
+
+        width: 120px;
+        height: 120px;
+    }
+
+
+    #joystick-base {
+        width: 95px;
+        height: 95px;
+    }
+
+
+    #joystick-stick {
+        width: 46px;
+        height: 46px;
+    }
+
+
+    #dash-button {
+        right: 18px;
+        bottom: 15px;
+
+        width: 65px;
+        height: 65px;
+    }
+
+
+    #player-hud {
+        bottom: 8px;
+    }
+
+
+    #skills-container {
+        bottom: 8px;
+    }
+
+
+    #boss-container {
+        top: 60px;
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    button {
+        touch-action: manipulation;
+    }
+
+
+    .difficulty-card:hover,
+    .upgrade-card:hover,
+    .cyber-button:hover {
+        transform: none;
+
+        box-shadow: none;
+    }
+
+
+    #mobile-controls {
+        display: block;
+    }
+
+}
+
+
+/* =========================================================
+   SCREEN NOTCH / SAFE AREA
+========================================================= */
+
+@supports (
+    padding:
+        env(safe-area-inset-top)
+) {
+
+    #top-hud {
+        top:
+            max(
+                8px,
+                env(safe-area-inset-top)
+            );
+    }
+
+
+    #joystick-area {
+        bottom:
+            max(
+                5px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+
+    #dash-button {
+        bottom:
+            max(
+                20px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #02070c;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #00f6ff;
+}
+
+
+/* =========================================================
+   END
+========================================================= */
