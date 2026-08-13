@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Tối ưu cho điện thoại -->
+    <meta
+        name="viewport"
+        content="width=device-width,
+                 height=device-height,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 user-scalable=no,
+                 viewport-fit=cover"
+    >
+
+    <title>CYBER HUNTER</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         MÀN HÌNH YÊU CẦU XOAY NGANG
+    ========================================== -->
+    <div id="rotate-screen">
+        <div class="rotate-icon">📱</div>
+
+        <h1>XOAY NGANG THIẾT BỊ</h1>
+
+        <p>
+            CYBER HUNTER được thiết kế<br>
+            cho màn hình ngang
+        </p>
+
+        <div class="rotate-arrow">↔</div>
+    </div>
+
+
+    <!-- =========================================
+         GAME
+    ========================================== -->
+    <main id="game">
+
+        <!-- =====================================
+             HUD PHÍA TRÊN
+        ====================================== -->
+        <header id="hud">
+
+            <!-- Người chơi -->
+            <div class="hud-player">
+
+                <div class="player-name">
+                    <span class="status-dot"></span>
+                    CYBER HUNTER
+                </div>
+
+                <div class="hp-container">
+                    <div class="hp-label">
+                        HP
+                    </div>
+
+                    <div class="hp-bar">
+                        <div id="player-hp"></div>
+                    </div>
+
+                    <span id="player-hp-text">
+                        100 / 100
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Thông tin màn -->
+            <div class="hud-center">
+
+                <div class="stage">
+                    ROUND <span id="round-number">1</span>
+                </div>
+
+                <div class="level">
+                    MÀN <span id="stage-number">1</span> / 5
+                </div>
+
+            </div>
+
+
+            <!-- Điểm -->
+            <div class="hud-score">
+
+                <div>
+                    SCORE
+                </div>
+
+                <strong id="score">
+                    000000
+                </strong>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             BOSS BAR
+        ====================================== -->
+        <section id="boss-hud">
+
+            <div class="boss-title">
+                ☠ BOSS
+            </div>
+
+            <div class="boss-hp-container">
+
+                <div id="boss-hp"></div>
+
+            </div>
+
+            <div id="boss-hp-text">
+                0 / 0
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             KHU VỰC GAME
+        ====================================== -->
+        <section id="game-world">
+
+            <!-- Canvas chính -->
+            <canvas id="gameCanvas"></canvas>
+
+
+            <!-- =================================
+                 THÔNG BÁO TRONG GAME
+            ================================== -->
+            <div id="game-message">
+
+                <div id="message-title">
+                    CYBER HUNTER
+                </div>
+
+                <div id="message-text">
+                    READY
+                </div>
+
+                <button id="start-button">
+                    START
+                </button>
+
+            </div>
+
+
+            <!-- =================================
+                 JOYSTICK DI CHUYỂN
+            ================================== -->
+            <div id="joystick">
+
+                <div id="joystick-base">
+
+                    <div id="joystick-stick">
+                        <span></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 KHU VỰC SKILL
+            ================================== -->
+            <div id="skill-controls">
+
+                <button
+                    class="skill-button"
+                    id="skill-bomb"
+                    data-skill="bomb"
+                >
+                    <span class="skill-icon">💣</span>
+                    <small>BOMB</small>
+                </button>
+
+
+                <button
+                    class="skill-button"
+                    id="skill-missile"
+                    data-skill="missile"
+                >
+                    <span class="skill-icon">🚀</span>
+                    <small>MISSILE</small>
+                </button>
+
+
+                <button
+                    class="skill-button"
+                    id="skill-clear"
+                    data-skill="clear"
+                >
+                    <span class="skill-icon">☄</span>
+                    <small>CLEAR</small>
+                </button>
+
+
+                <button
+                    class="skill-button"
+                    id="skill-ultra"
+                    data-skill="ultra"
+                >
+                    <span class="skill-icon">⚡</span>
+                    <small>ULTRA</small>
+                </button>
+
+            </div>
+
+
+            <!-- =================================
+                 TRẠNG THÁI VŨ KHÍ
+            ================================== -->
+            <div id="weapon-status">
+
+                <div class="weapon-name">
+                    <span id="weapon-name">
+                        CYBER GUN
+                    </span>
+                </div>
+
+                <div class="weapon-level">
+                    LV.<span id="weapon-level">1</span>
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 THÔNG BÁO ITEM
+            ================================== -->
+            <div id="item-popup">
+
+                <div class="item-popup-icon" id="item-icon">
+                    ⚡
+                </div>
+
+                <div class="item-popup-content">
+
+                    <strong id="item-name">
+                        ITEM
+                    </strong>
+
+                    <span id="item-description">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 VÙNG HIỂN THỊ WAVE
+            ================================== -->
+            <div id="wave-info">
+
+                <span>
+                    ENEMIES
+                </span>
+
+                <strong id="enemy-count">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER GAME
+        ====================================== -->
+        <footer id="game-footer">
+
+            <div class="control-hint">
+                <span>🕹</span>
+                DI CHUYỂN
+            </div>
+
+            <div class="auto-fire">
+                <span class="fire-dot"></span>
+                AUTO FIRE
+            </div>
+
+            <div class="aim-hint">
+                NGẮM & BẮN THỦ CÔNG
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
